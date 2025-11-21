@@ -1,507 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Halldor Olafsson</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <style>
-    html {
-      font-family: Raleway, serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Halldor Olafsson</title>
 
-    body {
-      margin: 0;
-      padding: 0;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    h1 {
-      font-size: 40pt;
-      margin-top: 0;
-    }
+    <style>
+        :root {
+            --text-main: #1f2937;
+            --text-secondary: #4b5563;
+            --accent: #2563eb; /* En rolig blåfarge for lenker */
+            --bg-tag: #f3f4f6;
+            --border-color: #e5e7eb;
+        }
 
-    h2 {
-      font-size: 30pt;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    h3 {
-      font-size: 20pt;
-      margin-bottom: 0.5rem;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem 1rem;
+        }
 
-    img#portrait {
-      max-height: 6cm;
-    }
+        /* Containeren som holder CV-en (A4-ish proporsjoner) */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
 
-    .tagline {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
+        /* --- Header & Kontaktinfo --- */
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
 
-    .job-title {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            color: #111;
+            letter-spacing: -0.025em;
+        }
 
-    .job-period {
-      font-weight: 400;
-    }
+        .tagline {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
 
-    p {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
 
-    ul {
-      margin-top: 0.25rem;
-      margin-bottom: 0.75rem;
-    }
+        .contact-info a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-secondary);
+        }
 
-    ul ul {
-      margin-left: 1.25rem;
-      margin-top: 0.1rem;
-      margin-bottom: 0.5rem;
-    }
+        .contact-info a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
 
-    @media print {
-      h1 {
-        font-size: 30pt;
-        margin-bottom: 0.25rem;
-      }
+        /* --- Seksjoner --- */
+        section {
+            margin-bottom: 3rem;
+        }
 
-      h2 {
-        font-size: 20pt;
-        margin: 1.0rem 0;
-      }
+        h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
 
-      h3 {
-        font-size: 15pt;
-        margin-top: 1.0em;
-      }
+        /* --- Jobbposter --- */
+        .job-item {
+            margin-bottom: 2rem;
+        }
 
-      header,
-      section,
-      footer {
-        page-break-inside: avoid;
-      }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
 
-      .container {
-        width: 100%;
-        box-shadow: none !important;
-      }
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #000;
+        }
 
-      .container,
-      img {
-        box-shadow: none !important;
-      }
-    }
+        .company {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
 
-    @media not print {
-      body {
-        background-image: url('images/MISSING_SOMETHING_NICE.png');
-      }
+        .company a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-      body>div.container {
-        padding: 2.5cm;
-        margin: 2.5cm auto;
-        background-color: #ffffff;
-        max-width: 900px;
-      }
-    }
+        .period {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums; /* Får tall til å linjere pent */
+        }
 
-    @media screen and (max-width: 600px) {
-      h1 {
-        font-size: 30pt;
-      }
+        .job-description {
+            margin-top: 0.5rem;
+        }
 
-      h2 {
-        font-size: 20pt;
-      }
+        .job-description p {
+            margin-bottom: 0.75rem;
+            margin-top: 0;
+        }
 
-      h3 {
-        font-size: 15pt;
-      }
+        ul {
+            margin: 0 0 1rem 0;
+            padding-left: 1.2rem;
+        }
 
-      body>div.container {
-        padding: 0.5cm;
-        margin-top: 0.5cm;
-        margin-bottom: 0.5cm;
-      }
-    }
+        li {
+            margin-bottom: 0.25rem;
+        }
 
-    a,
-    a:visited {
-      color: black;
-    }
+        /* --- Tags (Skills/Tools) --- */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
 
-    a:hover {
-      color: blue;
-    }
+        .tag {
+            font-size: 0.8rem;
+            background-color: var(--bg-tag);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
 
-    #contact .row {
-      margin-bottom: 5px;
-    }
+        .tech-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: block;
+            color: var(--text-secondary);
+        }
 
-    footer hr {
-      margin: 1.25em 0;
-      height: 2px;
-      color: transparent;
-      box-shadow: inset 0 0 0 2px black;
-    }
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-top: 4rem;
+        }
 
-    h2 {
-      display: block;
-      overflow: hidden;
-      white-space: nowrap;
-    }
+        footer a { color: inherit; }
 
-    h2>span {
-      position: relative;
-      display: inline-block;
-    }
+        /* --- Mobiljusteringer --- */
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem; }
+            .job-header { flex-direction: column; }
+            .period { margin-bottom: 0.5rem; font-size: 0.85rem; color: #6b7280; }
+            .contact-info { flex-direction: column; gap: 0.5rem; }
+        }
 
-    h2>span:after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 9999px;
-      height: 2px;
-      box-shadow: inset 0 0 0 2px black;
-      left: 100%;
-      margin-left: 15px;
-    }
+        /* --- Utskriftsoptimalisering --- */
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; max-width: 100%; padding: 0; margin: 0; }
+            a { text-decoration: none; color: black; }
+            header { border-bottom: 1px solid #000; }
+            .tag { border: 1px solid #ccc; background: white; }
+        }
+    </style>
 
-    .chip {
-      color: black;
-      background-color: rgba(255, 255, 255, 0.75);
-      border: 1px solid;
-    }
-  </style>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132472597-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-132472597-1');
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132472597-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-132472597-1');
+    </script>
 </head>
-
 <body>
-  <div class="container z-depth-3">
-    <header>
-      <div class="row">
-        <div class="col s8">
-          <h1>
-            Halldor Olafsson
-          </h1>
 
-          <p class="tagline">
-            Service integrator, developer, automation engineer with 20+ years of experience in tolling, energy and banking systems.
-          </p>
+    <div class="container">
+        <header>
+            <h1>Halldor Olafsson</h1>
+            <p class="tagline">Developer & Automation Engineer with 20+ years of experience in tolling, energy, and banking systems.</p>
 
-          <section id="contact">
-            <div class="row">
-              <div class="col s4">
-                Address
-              </div>
-              <div class="col s8">
-                Øvre Nordbakkan 17, 7550 Hommelvik
-              </div>
+            <div class="contact-info">
+                <span>Øvre Nordbakkan 17, 7550 Hommelvik</span>
+                <span>+47 948 11 874</span>
+                <span><a href="mailto:halldor.olafsson@gmail.com">halldor.olafsson@gmail.com</a></span>
+                <span>GitHub: <a href="https://github.com/halldorolafsson">halldorolafsson</a></span>
+                <span>Born: June 25th, 1974</span>
             </div>
+        </header>
 
-            <div class="row">
-              <div class="col s4">
-                Date of birth
-              </div>
-              <span id="birthdate" class="col s8">
-                June 25th, 1974
-              </span>
-            </div>
+        <main>
+            <section>
+                <h2>Professional Experience</h2>
 
-            <div class="row">
-              <div class="col s4">
-                Telephone
-              </div>
-              <div class="col s8">
-                +47 948 11 874
-              </div>
-            </div>
+                <article class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">SIAM Service Integrator</div>
+                            <div class="company"><a href="https://www.systor.st/">Systor</a></div>
+                        </div>
+                        <div class="period">2021 - Present</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Working as part of the SIAM service integrator team, focusing on automation, Elasticsearch configuration, and service management governance.</p>
 
-            <div class="row">
-              <div class="col s4">
-                E-mail
-              </div>
-              <div class="col s8">
-                <a href="mailto:halldor.olafsson@gmail.com">halldor.olafsson@gmail.com</a>
-              </div>
-            </div>
+                        <p><strong>Key Responsibilities:</strong></p>
+                        <ul>
+                            <li><strong>Automation:</strong> Developing Python, PowerShell, and JavaScript scripts to automate processes.</li>
+                            <li><strong>Elasticsearch:</strong> ETL pipelines, data collection, and dashboard visualization in Kibana.</li>
+                            <li><strong>Governance:</strong> Incident handling, change enablement, and leading working groups.</li>
+                            <li><strong>ML:</strong> Member of internal ML group (data cleaning, model evaluation, Pandas).</li>
+                        </ul>
 
-            <div class="row">
-              <div class="col s4">
-                GitHub
-              </div>
-              <div class="col s8">
-                <a href="https://github.com/halldorolafsson">github.com/halldorolafsson</a>
-              </div>
-            </div>
-          </section>
-        </div>
-<!-- 
-        <div class="col s4">
-          <img id="portrait" class="responsive-img right z-depth-1" src="images/portrait.jpg" alt="Portrait of Halldor Olafsson">
-        </div>
-      </div>
--->
-      </header>
+                        <span class="tech-label">Technologies used:</span>
+                        <div class="tags-container">
+                            <span class="tag">Python</span>
+                            <span class="tag">PowerShell</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Elasticsearch</span>
+                            <span class="tag">Kibana</span>
+                            <span class="tag">MS SQL</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Jira/Confluence</span>
+                            <span class="tag">Pytorch</span>
+                        </div>
+                    </div>
+                </article>
 
-    <section id="work">
-      <h2>
-        <span>
-          Work
-        </span>
-      </h2>
+                <article class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Functional Architect</div>
+                            <div class="company"><a href="https://www.tietoevry.com/en/">TietoEVRY</a></div>
+                        </div>
+                        <div class="period">2019 - 2021</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Functional Architect in EVRY's Digital Banking Services. Collaborated with UX designers, other architects and developers to create specifications for internet bank solutions.</p>
 
-      <!-- Systor -->
-      <section>
-        <h3>
-          <a href="https://www.systor.st/">
-            Systor
-          </a>
-          <span class="right job-period">
-            2021 &rarr; present
-          </span>
-        </h3>
-        <div class="job-title">
-          SIAM Service Integrator
-        </div>
-        <div>
-          <p>
-            Currently working at Systor as part of the SIAM service integrator team.
-          </p>
+                        <div class="tags-container">
+                            <span class="tag">Jira</span>
+                            <span class="tag">Confluence</span>
+                            <span class="tag">OpenAPI/Swagger</span>
+                            <span class="tag">Postman</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">Agile/Scrum</span>
+                        </div>
+                    </div>
+                </article>
 
-          <p><strong>Tasks and responsibilities:</strong></p>
-          <ul>
-            <li>Automation: Developing Python, PowerShell and JavaScript scripts to automate processes wherever possible.</li>
-            <li>Elasticsearch: Configuring Elasticsearch, designing data collection and ETL pipelines, and creating visualisations and dashboards in Kibana.</li>
-            <li>Service management governance: Delivering service management governance in line with ITIL 4 and the SIAM methodology in a complex multi-vendor value chain, including:
-              <ul>
-                <li>- Defining strategies and implementing procedures for information sharing, knowledge management, communication, relationships and good collaboration.</li>
-                <li>- Incident handling and automated service desk request handling.</li>
-                <li>- Leading and managing change enablement (from requirements through Change Advisory Board), problem management, event monitoring and alert management.</li>
-                <li>- Facilitating working groups, driving continual improvement, performing measurement and reporting, handling SLAs/OLAs and other ITIL-based processes.</li>
-              </ul>
-            </li>
-            <li>Access management: Administering user access in Active Directory and Cisco Duo VPN.</li>
-            <li>Machine learning: Member of Systors internal ML group. Participating in data cleaning and analysis, model evaluation, training and tuning.</li>
-          </ul>
+                <article class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Developer</div>
+                            <div class="company"><a href="https://www.tietoevry.com/">Tieto</a></div>
+                        </div>
+                        <div class="period">2006 - 2019</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Worked extensively with Energy Components (EC) hydrocarbon accounting systems for clients like Equinor, Shell, and Petrobras.</p>
+                        <ul>
+                            <li><strong>Equinor Consultant (2012-2019):</strong> Full-stack tasks ranging from DB design and architecture to server administration and Agile project management.</li>
+                            <li><strong>Madrid/Global (2010-2012):</strong> Managed delivery to Repsol. Frequent travel to South America and USA.</li>
+                        </ul>
 
-          <p><strong>Tools and technologies:</strong></p>
-          <ul>
-            <li>Python, PowerShell, JavaScript</li>
-            <li>MS SQL Server, MongoDB</li>
-            <li>Elasticsearch / Kibana</li>
-            <li>Pytorch, Pandas</li>
-            <li>Atlassian Cloud (Jira, Confluence, Assets, Operations, APIs)</li>
-            <li>Zapier, Retool, Retrium, Miro</li>
-          </ul>
-        </div>
-      </section>
+                        <div class="tags-container">
+                            <span class="tag">Oracle SQL</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">PowerBuilder</span>
+                            <span class="tag">AWS</span>
+                            <span class="tag">Azure Power BI</span>
+                            <span class="tag">Jenkins</span>
+                            <span class="tag">Scrum/Kanban</span>
+                        </div>
+                    </div>
+                </article>
 
-      <!-- TietoEVRY -->
-      <section>
-        <h3>
-          <a href="https://www.tietoevry.com/en/">
-            TietoEVRY
-          </a>
-          <span class="right job-period">
-            2019 – 2021
-          </span>
-        </h3>
-        <div class="job-title">
-          Functional Architect
-        </div>
-        <div>
-          <p>
-            In TietoEVRY, the role of Functional Architect was equivalent to a Business Analyst in EVRY's Digital Banking Services.
-          </p>
+                <article class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">System Developer</div>
+                            <div class="company"><a href="https://www.q-free.com/">Q-Free</a></div>
+                        </div>
+                        <div class="period">2001 - 2006</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Developed back-office applications for AutoPASS road tolling (transactions, invoicing, enforcement). Delivered on-site systems in Faroe Islands and Iceland.</p>
+                        <div class="tags-container">
+                            <span class="tag">Sybase SQL</span>
+                            <span class="tag">MS SQL</span>
+                            <span class="tag">PowerBuilder</span>
+                            <span class="tag">Perl</span>
+                            <span class="tag">PHP</span>
+                        </div>
+                    </div>
+                </article>
 
-          <p><strong>Main tasks:</strong></p>
-          <ul>
-            <li>Finding solutions and creating specifications for front-end and back-end implementation of the DBS internet bank solution.</li>
-            <li>Collaborating with Sales on customer proposals.</li>
-            <li>Working closely with UX designers and solution architects.</li>
-            <li>Maintaining team backlogs, supporting product managers and facilitating agile processes.</li>
-          </ul>
+                <article class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Junior Developer</div>
+                            <div class="company">E-team</div>
+                        </div>
+                        <div class="period">2001 - 2002</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Junior developer participating in early web shop development and hotel ordering systems.</p>
+                        <div class="tags-container">
+                            <span class="tag">Java</span>
+                            <span class="tag">XML</span>
+                            <span class="tag">Sybase</span>
+                            <span class="tag">IBM WebSphere</span>
+                        </div>
+                    </div>
+                </article>
+            </section>
 
-          <p><strong>Tools:</strong></p>
-          <ul>
-            <li>Jira for tracking work and tasks.</li>
-            <li>Confluence for documentation and diagrams (requirements and interface specifications).</li>
-            <li>Postman, SoapUI, Swagger, OpenAPI for APIs and SOAP web services.</li>
-            <li>Atom, VS Code, Git, Bitbucket for source code handling.</li>
-            <li>InVision and Figma for sketches and design/UX support.</li>
-            <li>Miro, Mural, Retrium and similar tools for team support and agile methodologies.</li>
-          </ul>
-        </div>
-      </section>
+            <section>
+                <h2>Skills & Interests</h2>
 
-      <!-- Tieto -->
-      <section>
-        <h3>
-          <a href="https://www.tietoevry.com/">
-            Tieto
-          </a>
-          <span class="right job-period">
-            2006 – 2019
-          </span>
-        </h3>
-        <div class="job-title">
-          Project Manager / Senior Business Analyst – Energy Components
-        </div>
-        <div>
-          <p>
-            At Tieto I started as a Business Analyst working with Tieto's Energy Components (EC) hydrocarbon accounting system. The work included gathering requirements, designing and implementing solutions, and providing support. Customers included Statoil/Equinor, Hydro, Petrobras, RasGas, Shell and others.
-          </p>
-          <p><strong>Tools and technologies:</strong></p>
-          <ul>
-            <li>Oracle SQL, Java, Eclipse, XML, Jira, PowerBuilder, Excel, Visual Basic, Subversion, Windows, Apache, JBoss/WildFly, Scrum</li>
-          </ul>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Languages</h3>
+                        <div class="tags-container">
+                            <span class="tag">Icelandic</span>
+                            <span class="tag">Norwegian</span>
+                            <span class="tag">English</span>
+                        </div>
+                    </div>
 
-          <p>
-            At the end of 2010 I moved with my family to Madrid, Spain, to manage an Energy Components delivery to Repsol. I was assigned as project manager but worked on all aspects of the delivery. I travelled frequently to South America (Peru, Brazil, Trinidad) and the USA to work with on-site customers.
-          </p>
-          <p><strong>Tools and technologies:</strong></p>
-          <ul>
-            <li>Oracle SQL, XML, Excel, Jira, SVN, Visio, Scrum/Kanban</li>
-          </ul>
+                    <div>
+                        <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Academic Interests</h3>
+                        <div class="tags-container">
+                            <span class="tag">Programming</span>
+                            <span class="tag">Machine Learning / AI</span>
+                            <span class="tag">IT Architecture</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Hobbies</h3>
+                        <div class="tags-container">
+                            <span class="tag">Football</span>
+                            <span class="tag">music</span>
+                            <span class="tag">snowboarding</span>
+                        </div>
+                    </div>
+            </section>
+        </main>
 
-          <p>
-            In 2012 I started working full time as a consultant for Equinor. I participated in an agile team with 9–12 Tieto co-workers there until 2019. My tasks ranged from project management, IT architecture, database design and system development to server administration, testing and 1st line support.
-          </p>
-          <p><strong>Tools and technologies:</strong></p>
-          <ul>
-            <li>Oracle SQL, XML, PowerBuilder, Visio, CVS/Git, AWS (virtual machines, virtual servers), Azure (Power BI, server hosting), Oracle APEX, Jenkins, Scrum/Kanban</li>
-          </ul>
-        </div>
-      </section>
+        <footer>
+            <a href="https://halldorolafsson.github.io/">https://halldorolafsson.github.io/</a>
+        </footer>
+    </div>
 
-      <!-- Q-Free -->
-      <section>
-        <h3>
-          <a href="https://www.q-free.com/">
-            Q-Free
-          </a>
-          <span class="right job-period">
-            2001 – 2006
-          </span>
-        </h3>
-        <div class="job-title">
-          System Developer – Back-office Systems
-        </div>
-        <div>
-          <p>
-            At Q-Free I worked as a developer in the AutoPASS road tolling team. I participated in creating two back-office applications that handled customer administration, financial transactions, invoicing, bank communication and enforcement of illegal passings (toll violations). These systems were delivered to all major road tolling projects in Norway.
-          </p>
-          <p>
-            In my last year at Q-Free I participated in and delivered on-site back-office systems in the Faroe Islands and Iceland.
-          </p>
-          <p><strong>Tools and technologies:</strong></p>
-          <ul>
-            <li>Sybase SQL, MS SQL, PowerBuilder, Perl, PHP, CVS, requirements gathering, documentation</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- E-team -->
-      <section>
-        <h3>
-          E-team
-          <span class="right job-period">
-            2001 – 2002
-          </span>
-        </h3>
-        <div class="job-title">
-          System Developer
-        </div>
-        <div>
-          <p>
-            At E-team I worked as a junior developer. I participated in the development of an early-type web shop for a plumbing services company. I also worked on designing and implementing a hotel ordering system, where my tasks included database design and front-end implementation.
-          </p>
-          <p><strong>Tools and technologies:</strong></p>
-          <ul>
-            <li>Sybase SQL, Sybase Jaguar server, IBM WebSphere server, PowerBuilder, Java, XML</li>
-          </ul>
-        </div>
-      </section>
-    </section>
-
-
-    <section id="skills">
-      <h2>
-        <span>
-          Skills
-        </span>
-      </h2>
-
-      <section id="languages">
-        <h3>
-          Languages
-        </h3>
-        <div class="chip">
-          Icelandic (native)
-        </div>
-        <div class="chip">
-          Norwegian (fluent)
-        </div>
-        <div class="chip">
-          English (advanced)
-        </div>
-      </section>
-
-      <section id="interests">
-        <h3>
-          Academic Interests
-        </h3>
-
-        <div class="chip">
-          Programming
-        </div>
-        <div class="chip">
-          Machine leaning / AI
-        </div>
-        <div class="chip">
-          IT architecture
-        </div>
-
-      </section>
-
-      <section id="hobbies">
-        <h3>
-          Hobbies
-        </h3>
-        <div class="chip">
-          Football, music and snowboarding
-        </div>
-      </section>
-    </section>
-
-    <footer>
-      <hr>
-      <div class="left">
-        <a href="https://halldorolafsson.github.io/">https://halldorolafsson.github.io/</a>
-      </div>
-    </footer>
-  </div>
 </body>
-
 </html>
-
-
-
